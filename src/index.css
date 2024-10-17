@@ -7,7 +7,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+img {
+  @apply max-w-full block;
+}
 body {
   font-family: "Quicksand", sans-serif;
+  @apply bg-[#1c1c1e] text-white;
+}
+.fx-row {
+  @apply flex items-center flex-row;
 }

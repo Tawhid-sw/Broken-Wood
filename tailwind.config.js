@@ -2,7 +2,17 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        Alegreya: "Alegreya Sans SC",
+      },
+      backgroundColor: {
+        secondary: "#282c34",
+      },
+      screens: {
+        mid_lg: "880px",
+      },
+    },
   },
   plugins: [],
 };
