@@ -11,6 +11,7 @@ export default {
       },
       screens: {
         mid_lg: "880px",
+        md: "775px",
       },
     },
   },

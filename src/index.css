@@ -17,3 +17,6 @@ body {
 .fx-row {
   @apply flex items-center flex-row;
 }
+.fx-col {
+  @apply flex items-center flex-col;
+}

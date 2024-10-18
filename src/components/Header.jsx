@@ -4,21 +4,11 @@ import userIcon from "../assets/images/user.png";
 import ExplorePage from "../pages/ExplorePage";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { CiSearch } from "react-icons/ci";
+import { Navigation } from "../contents/Navigation";
 
 const Header = () => {
   const [searchInput, setSearchInput] = React.useState("");
   const navigate = useNavigate();
-
-  const Navigation = [
-    {
-      lable: "Tv Shows",
-      href: "/tv",
-    },
-    {
-      lable: "Movies",
-      href: "/movies",
-    },
-  ];
 
   useEffect(() => {
     navigate(`/search?q=${searchInput}`);
@@ -29,7 +19,7 @@ const Header = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 justify-between w-full h-16 px-20 pt-4 bg-opacity-75 fx-row ">
+    <header className="fixed top-0 left-0 justify-between w-full h-16 px-4 pt-4 bg-opacity-75 lg:px-20 fx-row ">
       <div className="justify-between w-full fx-row">
         <div className="justify-start w-1/2 gap-4 fx-row">
           <Link
@@ -39,7 +29,7 @@ const Header = () => {
             <img src={logo} width={40} alt="Logo" />
             BrokenWoood
           </Link>
-          <nav className="justify-start w-full gap-3 fx-row">
+          <nav className="justify-start w-full gap-3 max-md:hidden fx-row">
             {Navigation.map((nav, index) => {
               return (
                 <div>
@@ -47,8 +37,8 @@ const Header = () => {
                     key={nav.lable}
                     to={nav.href}
                     className={({ isActive }) =>
-                      `px-2 py-2 font-medium transition-opacity duration-200 ease-in opacity-65 font-lg hover:opacity-100 ${
-                        isActive && `opacity-100`
+                      `px-2 py-2 font-medium transition-opacity duration-200 ease-in  font-lg hover:opacity-100 ${
+                        isActive ? `opacity-100` : `opacity-65`
                       }`
                     }
                   >
@@ -62,20 +52,23 @@ const Header = () => {
         <div className="justify-end w-1/2 gap-3 ml-auto fx-row">
           <form
             onSubmit={handleSubmit}
-            className="px-4 py-[6px] bg-secondary rounded-3xl fx-row w-[25vw]"
+            className="md:px-4 md:py-[6px] md:bg-secondary md:rounded-3xl fx-row md:w-[25vw]"
           >
             <input
               type="text"
               placeholder="Search here..."
-              className="w-full text-lg font-medium text-white bg-transparent outline-none placeholder:font-medium focus-within:outline-none focus-visible:outline-none"
-              onChange={(s) => setSearchInput(s.target.value)}
+              className="w-full text-lg font-medium text-white bg-transparent outline-none max-md:hidden placeholder:font-medium focus-within:outline-none focus-visible:outline-none"
+              onChange={(text) => setSearchInput(text.target.value)}
               value={searchInput}
             />
-            <button className="text-2xl text-white ">
+            <button className="text-2xl text-white max-md:p-2 max-md:bg-secondary max-md:rounded-full">
               <CiSearch strokeWidth={1} />
             </button>
           </form>
-          <div className="flex items-center justify-center w-10 h-10 overflow-hidden bg-blue-400 rounded-full cursor-pointer">
+          <div
+            className="flex items-center justify-center w-10 h-10 overflow-hidden bg-blue-400 rounded-full cursor-pointer"
+            title="Account"
+          >
             <img
               src={userIcon}
               alt="user"
