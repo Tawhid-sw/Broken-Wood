@@ -11,7 +11,9 @@ const Header = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    navigate(`/search?q=${searchInput}`);
+    if (searchInput) {
+      navigate(`/search?q=${searchInput}`);
+    }
   }, [searchInput]);
 
   const handleSubmit = (submit) => {
@@ -32,7 +34,7 @@ const Header = () => {
           <nav className="justify-start w-full gap-3 max-md:hidden fx-row">
             {Navigation.map((nav, index) => {
               return (
-                <div>
+                <div key={nav.lable + index}>
                   <NavLink
                     key={nav.lable}
                     to={nav.href}
